@@ -1,9 +1,14 @@
+
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxian_super_admin_web/style/pallet.dart';
 import 'package:taxian_super_admin_web/widgets/TextField/text_field.dart';
 import 'package:taxian_super_admin_web/widgets/customButton/custom_button.dart';
 
+import '../../controlers/LoginControler/login_cubit.dart';
 import '../../style/styles.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -65,7 +70,9 @@ class LoginScreen extends StatelessWidget {
             height: 35.h,
           ),
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                debugPrint("Pressed");
+              },
               child: Text(
                 "Forgot Password",
                 style: Style.smallTextWithUnderLine.copyWith(
@@ -79,7 +86,10 @@ class LoginScreen extends StatelessWidget {
             width: 264,
             height: 34,
             child: CustomButton(
-              onPressed: () {},
+              onPressed: () {
+                context.read<LoginCubit>().login(
+                    adminId: adminId.text, password: password.text);
+              },
               backgroundColor: Color(0xfff767676),
               child: Text("Sign in",
                   style: Style.h20.copyWith(
