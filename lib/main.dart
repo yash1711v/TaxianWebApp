@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:taxian_super_admin_web/controlers/LoginControler/login_cubit.dart';
 import 'package:taxian_super_admin_web/controlers/loadingScreenControler/loading_screen_cubit.dart';
 import 'package:taxian_super_admin_web/routes/route_helper.dart';
 import 'package:taxian_super_admin_web/style/pallet.dart';
 import 'package:taxian_super_admin_web/util/network/internet_handler.dart';
 import 'package:taxian_super_admin_web/widgets/responsive/ResponsiveBuilder.dart';
 
+import 'InjectionContainer/injection_Container.dart';
 import 'View/LoadingScreen/loading_screen.dart';
 import 'flavors/config/flavor_config.dart';
 
@@ -33,13 +35,16 @@ class MyApp extends StatelessWidget {
         BlocProvider<LoadingScreenCubit>(
           create: (BuildContext context) => LoadingScreenCubit()..endLoading(),
         ),
+        BlocProvider<LoginCubit>(
+          create: (BuildContext context) => LoginCubit(),
+        ),
       ],
       child: InternetHandler(
         child: MaterialApp(
           navigatorKey: navigatorKey,
           scrollBehavior: const ScrollBehavior().copyWith(overscroll: true),
           debugShowCheckedModeBanner: false,
-          title: FlavorConfig.instance.appName,
+          title: locator<FlavorConfig>().appName,
           builder: (context, child) => ResponsiveBuilder(
             builder: (context) {
               return BotToastInit()(context, child);
