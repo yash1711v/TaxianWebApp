@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:taxian_super_admin_web/repo/api.dart';
 
@@ -11,6 +12,7 @@ Future<void> setup() async {
   final pref = Pref();
   await pref.init();
   locator.registerLazySingleton<Pref>(() => pref);
+  locator.registerLazySingleton<Dio>(() => Dio());
   locator.registerLazySingleton<FlavorConfig>(() => FlavorConfig());
   locator.registerLazySingleton<Repo>(() => Repo());
   locator.registerLazySingleton<ApiCaller>(() => ApiCaller());

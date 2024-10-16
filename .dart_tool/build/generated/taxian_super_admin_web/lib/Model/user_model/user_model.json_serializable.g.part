@@ -1,0 +1,35 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
+    _$UserModelImpl(
+      id: (json['id'] as num?)?.toInt() ?? 0,
+      mobileNumber: json['mobileNumber'] as String? ?? "",
+      name: json['name'] as String? ?? "",
+      emailId: json['email_id'] as String? ?? "",
+      profession: json['profession'] as String? ?? "",
+      panNumber: json['pan_number'] as String? ?? "",
+      member: json['member'] as String?,
+      pin: json['pin'] as String? ?? "",
+      otp: json['otp'] as String?,
+      passwordEncoder: json['passwordEncoder'] as String?,
+      active: json['active'] as bool? ?? true,
+      profileImageUrl: json['profileImageUrl'] as String?,
+    );
+
+Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'mobileNumber': instance.mobileNumber,
+      'name': instance.name,
+      'email_id': instance.emailId,
+      'profession': instance.profession,
+      'pan_number': instance.panNumber,
+      'member': instance.member,
+      'pin': instance.pin,
+      'otp': instance.otp,
+      'passwordEncoder': instance.passwordEncoder,
+      'active': instance.active,
+      'profileImageUrl': instance.profileImageUrl,
+    };

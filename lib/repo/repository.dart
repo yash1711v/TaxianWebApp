@@ -18,7 +18,7 @@ class Repo {
   Future<dynamic> login(
       {required String adminId, required String password}) async {
     var body = {"mobileNumber": adminId, "pin": password};
-    var res = await  locator<ApiCaller>().postWithHeader("/api/admins/authenticate-and-generate-token", body);
+    var res = await  locator<ApiCaller>().post("/api/admins/authenticate-and-generate-token", body);
     return res;
   }
 
